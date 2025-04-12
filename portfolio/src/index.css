@@ -3,5 +3,7 @@
 @tailwind utilities;
 
 :root{
-    --purple: #A64AC9
+    --purple: #A64AC9;
+    --black-light: #151312;
+    --black-dark: #09090b;
 }

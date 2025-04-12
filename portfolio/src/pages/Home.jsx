@@ -1,8 +1,12 @@
 import React from "react";
+import Navbar from "../components/Navbar";
 
 const Home = () => {
     return (
-        <div className="bg-[#0a0a0a] min-h-screen flex flex-row px-16 pt-24 gap-12">
+        
+        <div className="overflow-hidden">
+            <Navbar />
+            <div className="bg-black-light min-h-screen flex flex-row px-16 pt-24 gap-12">
             <div className="flex flex-col w-2/3 ">
                 <p className="text-white font-heading font-bold text-4xl">Hi, I'm </p>
                 <p className="text-5xl font-bold pt-3 font-heading text-purple">Aadya</p>
@@ -18,6 +22,7 @@ const Home = () => {
                 hover:shadow-[0_0_17px_5px_rgba(166,74,201,0.5)]"
                 />
             </div>
+        </div>
         </div>
     );
 }

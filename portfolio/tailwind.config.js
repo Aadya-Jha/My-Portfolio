@@ -7,7 +7,9 @@ export default {
   theme: {
     extend: {
       colors:{
-        purple: "var(--purple)"
+        purple: "var(--purple)",
+        "black-light": "var(--black-light)",
+        "black-dark": "var(--black-dark)"
       },
       fontFamily:{
         heading:["Poppins", "sans-serif"],
