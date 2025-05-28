@@ -12,8 +12,7 @@ export default {
         "black-dark": "var(--black-dark)"
       },
       fontFamily:{
-        heading:["Poppins", "sans-serif"],
-        body:["Inter", "sans-serif"]
+        inter: ['Inter', 'sans-serif'],
       }
     },
   },

@@ -5,7 +5,7 @@ import linkedinIcon from "../assets/linkedin-light.png";
 
 const Topbar = () => {
     return (
-        <div className="w-screen h-16 bg-black-light flex">
+        <div className="w-screen ml-20 h-16 bg-black-light flex">
             <div>
                 <ul className="flex">
                     <li className="pl-6 pr-6 pt-2">
@@ -25,9 +25,9 @@ const Topbar = () => {
                     </li>
                 </ul>
             </div>
-            <div className="ml-auto border-2 border-purple mr-36 mt-3 pl-6 pr-6 flex justify-center items-center rounded-xl hover:bg-purple group
+            <div className="ml-auto border-2 border-purple mr-36 mt-3 pl-6 pr-6 h-10 flex justify-center items-center rounded-xl hover:bg-purple group
              hover:cursor-pointer">
-                <h2 className="text-purple font-semibold text-xl group-hover:text-white  ">RESUME</h2>
+                <h2 className="text-purple font-semibold font-inter text-xl group-hover:text-white  ">RESUME</h2>
             </div>
         </div>
     );

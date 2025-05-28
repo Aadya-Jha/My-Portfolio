@@ -19,7 +19,7 @@ const Skills = () => {
 
     return(
         <div className="bg-[#0a0a0a] min-h-screen w-full">
-            <h1 className="font-sans font-extrabold text-[#A64AC9] text-4xl px-10 pt-5 ">Skills</h1>
+            <h1 className="font-inter font-extrabold text-[#A64AC9] text-4xl px-10 pt-5 ">Skills</h1>
             <div className="p-10 grid grid-cols-4">
             {features.map((skill, index) => (
                 <SkillCard key={index} title={skill.title} img={skill.img} />
