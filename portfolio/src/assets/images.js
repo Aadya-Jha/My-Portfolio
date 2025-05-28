@@ -9,6 +9,7 @@ import javascript from './javascript.png'
 import node from './nodejs.png'
 import tailwind from './tailwind.png'
 import python from './python.png'
+import c from './c.png'
 
 export const logos = {
     react,
@@ -21,5 +22,6 @@ export const logos = {
     javascript,
     node,
     tailwind,
-    python
+    python,
+    c,
 };
