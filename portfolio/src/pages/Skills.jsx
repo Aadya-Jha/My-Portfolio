@@ -1,6 +1,6 @@
 import React from "react";
 import SkillCard from "../components/SkillCard";
-import {logos} from '../assets/images.js'
+import {logos} from '../assets/images.js';
 
 const Skills = () => {
 

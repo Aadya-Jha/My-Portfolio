@@ -5,10 +5,10 @@ import Topbar from "../components/Topbar";
 const Home = () => {
     return (
         
-        <div className="overflow-hidden">
-            <Topbar />
-            <div className="overflow-hidden flex">
+        <div className="flex h-screen overflow-hidden">
             <Navbar />
+            <div className="flex flex-col flex-grow">
+            <Topbar />
             <div className="bg-black-light min-h-screen flex flex-row px-16 pt-24 gap-12">
             <div className="flex flex-col w-2/3 ">
                 <p className="text-white font-heading font-bold text-4xl">Hi, I'm </p>
