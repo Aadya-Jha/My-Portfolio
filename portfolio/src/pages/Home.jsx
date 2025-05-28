@@ -1,10 +1,13 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import Topbar from "../components/Topbar";
 
 const Home = () => {
     return (
         
         <div className="overflow-hidden">
+            <Topbar />
+            <div className="overflow-hidden flex">
             <Navbar />
             <div className="bg-black-light min-h-screen flex flex-row px-16 pt-24 gap-12">
             <div className="flex flex-col w-2/3 ">
@@ -22,6 +25,7 @@ const Home = () => {
                 hover:shadow-[0_0_17px_5px_rgba(166,74,201,0.5)]"
                 />
             </div>
+        </div>
         </div>
         </div>
     );
