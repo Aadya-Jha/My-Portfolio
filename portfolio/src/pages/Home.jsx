@@ -5,11 +5,11 @@ import Topbar from "../components/Topbar";
 const Home = () => {
     return (
         
-        <div className="flex h-screen overflow-hidden">
+        <div className="flex h-screen overflow-x-hidden overflow-y-auto bg-black-light">
             <Navbar />
             <div className="flex flex-col flex-grow">
             <Topbar />
-            <div className="bg-black-light min-h-screen flex flex-row px-16 ml-20 pt-24 gap-12">
+            <div className=" min-h-screen flex flex-col md:flex-row px-16 ml-20 pt-24 gap-12">
             <div className="flex flex-col w-2/3 ">
                 <p className="text-white font-heading font-inter pt-4 text-4xl">Hi, I'm </p>
                 <p className="text-5xl font-bold pt-3 font-inter text-purple hover:drop-shadow-[0_0_10px_#A64AC9]">Aadya</p>
@@ -18,8 +18,8 @@ const Home = () => {
                      I can help drive innovation while evolving into a skilled and reliable Software Engineer.
                     <br />Let’s innovate, collaborate, and build the future together.
                 </p>
-                </div>
-            <div className="w-1/3 h-96 flex justify-center items-center">
+            </div>
+            <div className="w-1/3 h-1/3 flex justify-center items-center">
                 <img src="../src/assets/aarchi.jpg" alt="profile-pic" 
                  className="h-56 w-56 flex justify-center items-center rounded-full shadow-[0_0_20px_3px_rgba(166,74,201,0.5)]
                 hover:shadow-[0_0_17px_5px_rgba(166,74,201,0.5)]"
