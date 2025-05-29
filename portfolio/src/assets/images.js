@@ -10,6 +10,8 @@ import node from './nodejs.png'
 import tailwind from './tailwind.png'
 import python from './python.png'
 import c from './c.png'
+import mongo from  './mongo.png'
+import sql from './mysql.png'
 
 export const logos = {
     react,
@@ -24,4 +26,6 @@ export const logos = {
     tailwind,
     python,
     c,
+    mongo,
+    sql,
 };
