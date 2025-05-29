@@ -21,7 +21,9 @@ const Skills = () => {
 
     return(
         <div className="bg-[#0a0a0a] min-h-screen w-full">
-            <h1 className="font-inter font-extrabold flex justify-center text-[#A64AC9] text-4xl px-10 pt-5 ">Skills</h1>
+            <h1 className="font-inter font-extrabold flex justify-center text-[#A64AC9] text-4xl px-10 pt-5 hover:drop-shadow-[0_0_10px_#A64AC9]">
+                Skills
+            </h1>
              <h3 className="font-inter text-gray-400 font-light text-xl flex justify-center">Languages</h3>
             <div className="p-10 grid grid-cols-4">
             {languages.map((skill, index) => (

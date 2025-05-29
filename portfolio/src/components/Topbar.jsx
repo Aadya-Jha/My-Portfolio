@@ -10,18 +10,24 @@ const Topbar = () => {
             <div>
                 <ul className="flex">
                     <li className="pl-6 pr-6 pt-2">
-                        <a href="https://github.com/Aadya-Jha/My-Portfolio">
-                            <img style={{ height: "30px", width: "30px" }} src={githubIcon} alt="" />
+                        <a href="https://github.com/Aadya-Jha">
+                            <img style={{ height: "30px", width: "30px" }}
+                            className="hover:shadow-[0_0_16px_4px_#A64AC9] rounded-full"
+                            src={githubIcon} alt="" />
                         </a>
                     </li>
                     <li className="pt-2">
                         <a href="https://www.linkedin.com/in/aadya-jha-1232442a2/">
-                            <img style={{ height: "30px", width: "30px" }} src={linkedinIcon} alt="" />
+                            <img style={{ height: "30px", width: "30px" }}
+                            className="hover:shadow-[0_0_16px_4px_#A64AC9] rounded-lg"
+                            src={linkedinIcon} alt="" />
                         </a>
                     </li>
                     <li className="pl-6 pr-6 pt-2" >
                         <a href="mailto:aadya.aarchi@gmail.com">
-                            <img style={{height: "30px", width: "30px" }} src="./src/assets/gmail.png" alt="" />
+                            <img style={{height: "30px", width: "30px" }}
+                            className="hover:shadow-[0_0_16px_4px_#A64AC9] rounded-lg"
+                            src="./src/assets/gmail.png" alt="" />
                         </a>
                     </li>
                 </ul>

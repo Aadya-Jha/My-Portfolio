@@ -31,7 +31,7 @@ const Education = () =>{
             <div className="flex flex-col">
                 <Topbar />
                 <div className="w-full flex justify-center mb-10 py-10">
-                <h1 className="text-purple text-5xl font-bold">Education</h1>
+                <h1 className="text-purple text-5xl font-bold hover:drop-shadow-[0_0_10px_#A64AC9]">Education</h1>
             </div>
 
             <div className="flex flex-col gap-8 items-center">

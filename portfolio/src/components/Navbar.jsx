@@ -7,7 +7,7 @@ const Navbar = () => {
             <ul >
                 <Link to="/skills">
                     <li className="transform rotate-90 origin-left mt-8 font-medium text-xl font-inter hover:cursor-pointer hover:text-white 
-                        hover:border-r-4 hover:border-purple">
+                        ">
                         Skills
                     </li>
                 </Link>

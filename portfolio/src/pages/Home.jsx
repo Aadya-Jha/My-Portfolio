@@ -12,7 +12,7 @@ const Home = () => {
             <div className="bg-black-light min-h-screen flex flex-row px-16 ml-20 pt-24 gap-12">
             <div className="flex flex-col w-2/3 ">
                 <p className="text-white font-heading font-inter pt-4 text-4xl">Hi, I'm </p>
-                <p className="text-5xl font-bold pt-3 font-inter text-purple">Aadya</p>
+                <p className="text-5xl font-bold pt-3 font-inter text-purple hover:drop-shadow-[0_0_10px_#A64AC9]">Aadya</p>
                 <p className="font-inter text-xl text-white pt-5">Computer Science undergrad with a strong foundation in problem-solving and a passion for building impactful tech solutions.
                      I’m driven by curiosity and a constant desire to grow. I aim to contribute to a forward-thinking team where 
                      I can help drive innovation while evolving into a skilled and reliable Software Engineer.
