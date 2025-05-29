@@ -45,13 +45,13 @@ const Skills = () => {
                 Skills
             </h1>
              <h3 className="font-inter text-gray-400 font-light text-xl flex justify-center">Languages</h3>
-            <div className="p-20 grid grid-cols-4">
+            <div className="p-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center gap-10">
             {languages.map((skill, index) => (
                 <SkillCard key={index} title={skill.title} img={skill.img} />
             ))}
             </div>
             <h3 className="font-inter text-gray-400 font-light text-xl flex justify-center">Frontend</h3>
-            <div className="p-20 grid grid-cols-4">
+            <div className="p-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center gap-10">
                 {frontend.map((skill, index)=>(
                  <SkillCard key={index} title={skill.title} img={skill.img} />   
                 ))}
