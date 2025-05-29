@@ -6,9 +6,9 @@ import linkedinIcon from "../assets/linkedin-light.png";
 
 const Topbar = () => {
     return (
-        <div className="w-screen ml-20 h-16 bg-black-light flex">
+        <div className="w-screen gap-4 ml-20 h-16 bg-black-light flex">
             <div>
-                <ul className="flex pt-4 fixed top-0 left-11">
+                <ul className="flex pt-4 ">
                     <li className=" pl-2 pr-3 md:pl-12 md:pr-6 ">
                         <a href="https://github.com/Aadya-Jha">
                             <img 
