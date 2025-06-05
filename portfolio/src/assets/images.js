@@ -12,6 +12,8 @@ import python from './python.png'
 import c from './c.png'
 import mongo from  './mongo.png'
 import sql from './mysql.png'
+import fundsyimg from './fundsy.jpg'
+import portfolioimg from './portfolioweb.jpg'
 
 export const logos = {
     react,
@@ -28,4 +30,6 @@ export const logos = {
     c,
     mongo,
     sql,
+    fundsyimg,
+    portfolioimg
 };
