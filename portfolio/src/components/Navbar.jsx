@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return(
-        <div className="bg-black-dark min-h-screen w-12 md:w-20 fixed top-0 left-0 pl-5 md:pl-10 pt-7 text-gray-300 ">
+        <div className="bg-black-dark min-h-screen w-10 md:w-20 fixed top-0 left-0 pl-5 md:pl-10 pt-7 text-gray-300 ">
             <ul >
                 <Link to="/">
                     <li className="transform rotate-90 origin-left mt-8 font-medium text-xl font-inter hover:cursor-pointer hover:text-white 
