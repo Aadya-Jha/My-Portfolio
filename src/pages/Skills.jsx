@@ -1,82 +1,89 @@
-import React from "react";
+import Navbar from "../components/Navbar";
 import SkillCard from "../components/SkillCard";
-import {logos} from '../assets/images.js';
-import Navbar from "../components/Navbar.jsx";
-import Topbar from "../components/Topbar.jsx";
+import { logos } from "../assets/images";
 
 const Skills = () => {
+  const sections = [
+    {
+      title: "Languages",
+      skills: [
+        { name: "JavaScript", icon: logos.javascript },
+        { name: "Python", icon: logos.python },
+        { name: "Java", icon: logos.java },
+        { name: "C", icon: logos.c },
+      ],
+    },
+    {
+      title: "Frontend",
+      skills: [
+        { name: "React", icon: logos.react },
+        { name: "HTML", icon: logos.html },
+        { name: "CSS", icon: logos.css },
+        { name: "Tailwind CSS", icon: logos.tailwind },
+      ],
+    },
+    {
+      title: "Backend",
+      skills: [
+        { name: "Node.js", icon: logos.node },
+        { name: "Express", icon: logos.express },
+      ],
+    },
+    {
+      title: "Databases",
+      skills: [
+        { name: "MongoDB", icon: logos.mongo },
+        { name: "MySQL", icon: logos.sql },
+      ],
+    },
+    {
+      title: "Tools",
+      skills: [
+        { name: "Git", icon: logos.git },
+        { name: "GitHub", icon: logos.github },
+      ],
+    },
+  ];
 
-    const languages = [
-        {title:"Python", img:logos.python},
-        {title:"Java", img:logos.java},
-        {title:"JavaScript", img:logos.javascript},
-        {title:"C", img:logos.c},
-    ]
+  return (
+    <div className="min-h-screen bg-black-light">
+      <Navbar />
 
-    const frontend = [
-        {title:"React.js", img:logos.react},
-        {title:"HTML5", img:logos.html},
-        {title:"CSS", img:logos.css},
-        {title:"TailwindCSS", img:logos.tailwind},
-    ]
+      <main className="max-w-6xl mx-auto px-6 md:px-16 pt-32 pb-32">
+        {/* Header */}
+        <header className="mb-24">
+          <h1 className="text-4xl md:text-5xl font-bold text-purple font-inter">
+            Skills
+          </h1>
+          <p className="mt-4 text-white/65 max-w-2xl font-inter">
+            Technologies I’ve worked with through coursework, projects,
+            and hands-on experimentation.
+          </p>
+        </header>
 
-    const backend = [
-        {title:"Node.js", img:logos.node},
-        {title:"Express.js", img:logos.express},
-    ]
+        {/* Sections */}
+        <div className="space-y-20">
+          {sections.map((section) => (
+            <section key={section.title}>
+              <h2 className="mb-6 text-lg font-semibold text-white/80 font-inter">
+                {section.title}
+              </h2>
 
-    const database = [
-        {title:"MongoDB", img:logos.mongo},
-        {title:"MySQL", img:logos.sql},
-    ]
-
-    const tools = [
-        {title:"Git", img:logos.git},
-        {title:"GitHub", img:logos.github},
-    ]
-
-
-    return(
-        <div className="overflow-x-hidden overflow-y-auto">
-            <Navbar />
-            <Topbar />
-            <div className="bg-black-light min-h-screen w-full" >
-                <h1 className="font-inter font-extrabold flex justify-center text-[#A64AC9] text-4xl px-10 pt-5 hover:drop-shadow-[0_0_10px_#A64AC9]">
-                Skills
-            </h1>
-             <h3 className="font-inter text-gray-400 font-light text-xl flex justify-center">Languages</h3>
-            <div className="p-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center gap-10">
-            {languages.map((skill, index) => (
-                <SkillCard key={index} title={skill.title} img={skill.img} />
-            ))}
-            </div>
-            <h3 className="font-inter text-gray-400 font-light text-xl flex justify-center">Frontend</h3>
-            <div className="p-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center gap-10">
-                {frontend.map((skill, index)=>(
-                 <SkillCard key={index} title={skill.title} img={skill.img} />   
+              <div className="flex flex-wrap gap-4">
+                {section.skills.map((skill) => (
+                  <SkillCard
+                    key={skill.name}
+                    name={skill.name}
+                    icon={skill.icon}
+                  />
                 ))}
-            </div>
-            <h3 className="font-inter text-gray-400 font-light text-xl flex justify-center">Backend</h3>
-            <div className="p-20 grid grid-cols-1 md:grid-cols-2 place-items-center gap-0">
-                {backend.map((skill, index)=>(
-                 <SkillCard key={index} title={skill.title} img={skill.img} />   
-                ))}
-            </div>
-            <h3 className="font-inter text-gray-400 font-light text-xl flex justify-center">Database</h3>
-            <div className="p-20 grid grid-cols-1 md:grid-cols-2 place-items-center gap-0">
-                {database.map((skill, index)=>(
-                 <SkillCard key={index} title={skill.title} img={skill.img} />   
-                ))}
-            </div>
-            <h3 className="font-inter text-gray-400 font-light text-xl flex justify-center">Tools</h3>
-            <div className="p-20 grid grid-cols-1 md:grid-cols-2 place-items-center gap-0">
-                {tools.map((skill, index)=>(
-                 <SkillCard key={index} title={skill.title} img={skill.img} />   
-                ))}
-            </div>
-            </div>
+              </div>
+            </section>
+          ))}
         </div>
-    );
-}
+      </main>
+    </div>
+  );
+};
 
 export default Skills;

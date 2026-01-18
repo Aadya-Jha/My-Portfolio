@@ -1,40 +1,56 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
-    return(
-        <div className="bg-black-dark min-h-screen w-10 md:w-20 fixed top-0 left-0 pl-5 md:pl-10 pt-7 text-gray-300 ">
-            <ul >
-                <Link to="/">
-                    <li className="transform rotate-90 origin-left mt-8 font-medium text-xl font-inter hover:cursor-pointer hover:text-white 
-                        ">
-                        About
-                    </li>
-                </Link>
-                <Link to="/skills">
-                    <li className="transform rotate-90 origin-left mt-16 font-medium text-xl font-inter hover:cursor-pointer hover:text-white 
-                        ">
-                        Skills
-                    </li>
-                </Link>
-                <Link to="/projects">
-                    <li className="transform rotate-90 origin-left mt-16 font-medium text-xl font-inter hover:cursor-pointer">
-                        Projects
-                    </li>
-                </Link>
-                <Link to='/experience'>
-                    <li className="transform rotate-90 origin-left mt-24 font-medium text-xl font-inter hover:cursor-pointer"> 
-                        Experience
-                    </li>
-                </Link>
-                <Link to="/education">
-                    <li className="transform rotate-90 origin-left mt-32 font-medium text-xl font-inter hover:cursor-pointer">
-                        Education
-                    </li>
-                </Link>
-            </ul>
-        </div>
-    );
-}
+  const location = useLocation();
+
+  const navItems = [
+    { name: "About", path: "/" },
+    { name: "Skills", path: "/skills" },
+    { name: "Experience", path: "/experience" },
+    { name: "Education", path: "/education" },
+  ];
+
+  return (
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-40">
+      <div
+        className="flex items-center gap-6 px-6 py-3 rounded-xl
+        bg-black-light/80 backdrop-blur-md
+        border border-white/10
+        shadow-[0_0_30px_rgba(0,0,0,0.6)]"
+      >
+        {/* Logo */}
+        <Link
+          to="/"
+          className="text-lg font-bold font-inter text-purple mr-4"
+        >
+          AJ<span className="text-white">.</span>
+        </Link>
+
+        {/* Commands */}
+        {navItems.map((item) => {
+          const isActive = location.pathname === item.path;
+
+          return (
+            <Link
+              key={item.name}
+              to={item.path}
+              className={`
+                px-3 py-1.5 rounded-md text-sm font-inter tracking-wide
+                border transition-all duration-300
+                ${
+                  isActive
+                    ? "border-purple text-purple shadow-[0_0_15px_rgba(166,74,201,0.6)]"
+                    : "border-white/10 text-white/70 hover:text-white hover:border-purple/50"
+                }
+              `}
+            >
+              {item.name}
+            </Link>
+          );
+        })}
+      </div>
+    </nav>
+  );
+};
 
 export default Navbar;
