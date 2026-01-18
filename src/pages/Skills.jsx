@@ -1,9 +1,9 @@
 import Navbar from "../components/Navbar";
+import Topbar from "../components/Topbar";
 import SkillCard from "../components/SkillCard";
 import { logos } from "../assets/images";
 import { motion } from "framer-motion";
 
-/* Card stagger */
 const containerVariants = {
   hidden: {},
   show: {
@@ -22,7 +22,6 @@ const itemVariants = {
   },
 };
 
-/* Section entrance */
 const sectionVariants = {
   hidden: { opacity: 0, y: 24 },
   show: {
@@ -80,6 +79,7 @@ const Skills = () => {
   return (
     <div className="min-h-screen bg-black-light">
       <Navbar />
+      <Topbar />
 
       <main className="relative max-w-6xl mx-auto px-6 md:px-16 pt-20 pb-24">
         <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">

@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import Topbar from "../components/Topbar";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -10,7 +11,6 @@ const Home = () => {
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
 
 
-          {/* LEFT CONTENT */}
           <div>
             <p className="text-white/70 text-xl md:text-2xl font-grotesk">
               Hi, I’m
@@ -27,43 +27,42 @@ const Home = () => {
               expanding my skill set in DevOps and system design.
             </p>
 
-            {/* CTA */}
             <div className="mt-10 flex flex-wrap gap-6">
-              <button
+              <Link
+                to="/projects"
                 className="
-                  px-6 py-3 rounded-lg
-                  bg-purple text-black font-semibold
-                  hover:scale-105
-                  hover:shadow-[0_0_30px_rgba(166,74,201,0.5)]
-                  transition-all duration-300
+                    px-6 py-3 rounded-lg
+                    bg-purple text-black font-semibold
+                    hover:scale-105
+                    hover:shadow-[0_0_30px_rgba(166,74,201,0.5)]
+                    transition-all duration-300
                 "
-              >
+                >
                 View Projects
-              </button>
+                </Link>
 
-              <button
+
+              <Link
+                to="/resume"
                 className="
-                  px-6 py-3 rounded-lg
-                  border border-purple text-purple
-                  hover:bg-purple hover:text-black
-                  hover:scale-105
-                  transition-all duration-300
+                    px-6 py-3 rounded-lg
+                    border border-purple text-purple
+                    hover:bg-purple hover:text-black
+                    hover:scale-105
+                    transition-all duration-300
                 "
-                
-              >
+                >
                 Resume
-              </button>
+                </Link>
+
             </div>
           </div>
 
-          {/* RIGHT / BOTTOM VISUAL (RESPONSIVE) */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative w-full max-w-[420px]">
 
-              {/* AMBIENT GLOW */}
               <div className="absolute inset-0 bg-purple/20 rounded-full blur-[120px]" />
 
-              {/* CODE CARD */}
               <div
                 className="
                   relative
@@ -74,21 +73,20 @@ const Home = () => {
                   shadow-[0_0_40px_rgba(166,74,201,0.25)]
                 "
               >
-                <pre className="text-sm font-mono text-white/90 leading-relaxed">
-{`const developer = {
-  name: "Aadya",
-  role: "CS Undergrad",
-  focus: [
-    "Backend",
-    "DSA",
-    "Web Dev"
-  ],
-  mindset: "Always learning"
-};`}
+                <pre className="text-sm font-grotesk text-white/90 leading-relaxed">
+                    {`const developer = {
+                    name: "Aadya",
+                    role: "CS Undergrad",
+                    focus: [
+                        "Backend",
+                        "DSA",
+                        "Web Dev"
+                    ],
+                    mindset: "Always learning"
+                    };`}
                 </pre>
               </div>
 
-              {/* FLOATING PILLS */}
               <span className="absolute -top-4 right-6 px-3 py-1 rounded-full text-xs bg-purple/20 text-purple border border-purple/40 animate-float">
                 Backend
               </span>

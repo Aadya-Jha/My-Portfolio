@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar";
+import Topbar from "../components/Topbar";
 import EducationCard from "../components/EducationCard";
 import { motion } from "framer-motion";
 
@@ -51,6 +52,7 @@ const Education = () => {
   return (
     <div className="bg-black-light min-h-screen w-full overflow-x-hidden">
       <Navbar />
+      <Topbar />
 
       <main className="relative max-w-5xl mx-auto px-6 md:px-16 pt-24 pb-24">
         <div className="pointer-events-none absolute inset-0 -z-10">
