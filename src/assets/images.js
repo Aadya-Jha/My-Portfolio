@@ -14,6 +14,8 @@ import mongo from  './mongo.png'
 import sql from './mysql.png'
 import fundsyimg from './fundsy.jpg'
 import portfolioimg from './portfolioweb.jpg'
+import postgres from './postgres.png'
+import postman from './postman.jpeg'
 
 export const logos = {
     react,
@@ -31,5 +33,7 @@ export const logos = {
     mongo,
     sql,
     fundsyimg,
-    portfolioimg
+    portfolioimg,
+    postgres,
+    postman,
 };

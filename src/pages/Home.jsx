@@ -3,14 +3,11 @@ import Navbar from "../components/Navbar";
 const Home = () => {
   return (
     <div className="min-h-screen bg-black-light">
-      {/* Terminal-style Navbar */}
       <Navbar />
 
-      {/* MAIN CONTENT */}
       <main className="max-w-7xl mx-auto px-6 md:px-16 pt-32">
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-[calc(100vh-8rem)]">
 
-          {/* LEFT SIDE */}
           <div>
             <p className="text-white/80 font-inter text-xl">
               Hi, I’m
@@ -30,7 +27,6 @@ const Home = () => {
               engineering and impact.
             </p>
 
-            {/* CTA — SINGLE SOURCE OF TRUTH */}
             <div className="mt-10 flex gap-6">
               <button
                 className="px-6 py-3 rounded-lg bg-purple text-black font-semibold
@@ -50,14 +46,11 @@ const Home = () => {
             </div>
           </div>
 
-          {/* RIGHT SIDE */}
           <div className="hidden lg:flex justify-center">
             <div className="relative w-[420px]">
 
-              {/* Glow */}
               <div className="absolute inset-0 bg-purple/20 rounded-full blur-[120px]" />
 
-              {/* Code Card */}
               <div
                 className="relative bg-black/70 border border-purple/30 rounded-xl
                 p-6 shadow-[0_0_40px_rgba(166,74,201,0.25)]"
@@ -76,7 +69,6 @@ const Home = () => {
                 </pre>
               </div>
 
-              {/* Pills — contained & stable */}
               <span
                 className="absolute -top-5 right-6 px-3 py-1 rounded-full text-xs
                 bg-purple/20 text-purple border border-purple/40"

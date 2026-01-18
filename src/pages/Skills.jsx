@@ -1,6 +1,36 @@
 import Navbar from "../components/Navbar";
 import SkillCard from "../components/SkillCard";
 import { logos } from "../assets/images";
+import { motion } from "framer-motion";
+
+/* Card stagger */
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 14 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: "easeOut" },
+  },
+};
+
+/* Section entrance */
+const sectionVariants = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
 
 const Skills = () => {
   const sections = [
@@ -33,6 +63,7 @@ const Skills = () => {
       title: "Databases",
       skills: [
         { name: "MongoDB", icon: logos.mongo },
+        { name: "PostgreSQL", icon: logos.postgres },
         { name: "MySQL", icon: logos.sql },
       ],
     },
@@ -41,6 +72,7 @@ const Skills = () => {
       skills: [
         { name: "Git", icon: logos.git },
         { name: "GitHub", icon: logos.github },
+        { name: "Postman", icon: logos.postman },
       ],
     },
   ];
@@ -49,36 +81,54 @@ const Skills = () => {
     <div className="min-h-screen bg-black-light">
       <Navbar />
 
-      <main className="max-w-6xl mx-auto px-6 md:px-16 pt-32 pb-32">
-        {/* Header */}
-        <header className="mb-24">
+      <main className="relative max-w-6xl mx-auto px-6 md:px-16 pt-20 pb-24">
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute -top-48 -left-48 w-[520px] h-[520px] rounded-full bg-purple/20 blur-[180px]" />
+          <div className="absolute top-1/3 -right-48 w-[420px] h-[420px] rounded-full bg-cyan-400/10 blur-[180px]" />
+        </div>
+
+        <header className="mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-purple font-inter">
             Skills
           </h1>
-          <p className="mt-4 text-white/65 max-w-2xl font-inter">
-            Technologies I’ve worked with through coursework, projects,
-            and hands-on experimentation.
-          </p>
         </header>
 
-        {/* Sections */}
-        <div className="space-y-20">
-          {sections.map((section) => (
-            <section key={section.title}>
-              <h2 className="mb-6 text-lg font-semibold text-white/80 font-inter">
+        <div className="space-y-8">
+          {sections.map((section, idx) => (
+            <motion.section
+              key={section.title}
+              variants={sectionVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-120px" }}
+              className="relative"
+              style={{
+                transform: `translateX(${idx % 2 === 0 ? "0px" : "0px"})`,
+              }}
+            >
+              <div className="relative mb-6 h-px overflow-hidden">
+                <div className="absolute inset-0 bg-white/10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple/60 to-transparent animate-divider" />
+              </div>
+
+              <h2 className="mb-5 text-sm font-semibold tracking-wide text-white/80 font-inter">
                 {section.title}
               </h2>
 
-              <div className="flex flex-wrap gap-4">
+              <motion.div
+                className="flex flex-wrap gap-x-4 gap-y-3 group"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-80px" }}
+              >
                 {section.skills.map((skill) => (
-                  <SkillCard
-                    key={skill.name}
-                    name={skill.name}
-                    icon={skill.icon}
-                  />
+                  <motion.div key={skill.name} variants={itemVariants}>
+                    <SkillCard name={skill.name} icon={skill.icon} />
+                  </motion.div>
                 ))}
-              </div>
-            </section>
+              </motion.div>
+            </motion.section>
           ))}
         </div>
       </main>
