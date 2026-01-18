@@ -15,7 +15,7 @@ const Resume = () => {
             Resume
           </h1>
 
-          <p className="mt-3 text-white/60 text-sm md:text-base">
+          <p className="mt-3 text-white/60 text-sm md:text-base font-grotesk">
             A concise overview of my education, skills, and experience.
           </p>
         </header>

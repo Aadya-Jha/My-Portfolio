@@ -1,38 +1,79 @@
 import React from "react";
 
-const ProjectCard = (props) => {
-    return(
-        <div className="bg-black-dark border border-purple rounded-3xl ml-24 mt-16 p-3 shadow-[0_0_12px_3px_rgba(166,74,201,0.15)]
-         hover:shadow-[0_0_20px_6px_rgba(166,74,201,0.4)] transition-shadow duration-300 w-96 flex flex-col gap-2">
+const ProjectCard = ({ img, title, subtitle, description, stack, link, github }) => {
+  return (
+    <div
+      className="
+        relative rounded-3xl
+        bg-gradient-to-b from-[#181520] to-[#0f0d14]
+        border border-white/10
+        p-6
 
+        shadow-[0_0_25px_rgba(166,74,201,0.18)]
+        transition-all duration-300 ease-out
+
+        hover:-translate-y-2
+        hover:shadow-[0_0_45px_rgba(166,74,201,0.45)]
+      "
+    >
+      <div className="rounded-2xl overflow-hidden mb-6">
         <img
-         src={props.img}
-         alt={props.title}
-         className="rounded-lg w-full h-28 object-cover shadow-sm"
+          src={img}
+          alt={title}
+          className="w-full h-48 object-cover"
         />
-        <h2 className="text-white text-xl font-bold truncate font-inter">{props.title}</h2>
-        <p className="text-gray-300 text-xs line-clamp-2 font-inter">{props.description}</p>
-        <span className="font-semibold text-purple text-md font-inter">{props.stack}</span>
-        <div className="flex gap-4 mt-1">
-            <a
-             href={props.link}
-             target="_blank"
-             rel="noopener noreferrer"
-             className="text-white hover:underline text-md font-inter hover:[text-shadow:0_0_8px_rgba(166,74,201,0.8)]"
+      </div>
+
+      <div className="space-y-3">
+        <h2 className="text-white text-2xl font-semibold font-grotesk">
+          {title}
+        </h2>
+
+        <p className="text-purple text-sm font-medium font-grotesk">
+          {subtitle}
+        </p>
+
+        <p className="text-white/70 text-sm leading-relaxed font-grotesk">
+          {description}
+        </p>
+
+        <div className="flex flex-wrap gap-2 pt-2">
+          {stack.map((tech) => (
+            <span
+              key={tech}
+              className="
+                px-3 py-1 rounded-full text-xs
+                border border-purple/40
+                text-purple
+                bg-purple/10
+              "
             >
-             Live / View
-            </a>
-            <a
-             href={props.github}
-             target="_blank"
-             rel="noopener noreferrer"
-             className="text-white hover:underline text-md font-inter hover:[text-shadow:0_0_8px_rgba(166,74,201,0.8)]"
-            >
-             Github
-            </a>
+              {tech}
+            </span>
+          ))}
         </div>
+
+        <div className="flex gap-6 pt-4">
+          <a
+            href={link}
+            target="_blank"
+            rel="noreferrer"
+            className="text-white text-sm font-grotesk font-medium hover:text-purple transition"
+          >
+            Live 
+          </a>
+          <a
+            href={github}
+            target="_blank"
+            rel="noreferrer"
+            className="text-white text-sm font-grotesk font-medium hover:text-purple transition"
+          >
+            GitHub 
+          </a>
+        </div>
+      </div>
     </div>
-    );
-}
+  );
+};
 
 export default ProjectCard;

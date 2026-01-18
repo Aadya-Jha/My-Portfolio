@@ -25,9 +25,7 @@ const Navbar = () => {
           px-4 py-3
         "
       >
-        {/* Top row */}
         <div className="flex items-center justify-between gap-6">
-          {/* Logo */}
           <Link
             to="/"
             className="text-lg font-bold font-grotesk text-purple"
@@ -35,7 +33,6 @@ const Navbar = () => {
             AJ<span className="text-white">.</span>
           </Link>
 
-          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-4">
             {navItems.map((item) => {
               const isActive = location.pathname === item.path;
@@ -60,7 +57,6 @@ const Navbar = () => {
             })}
           </div>
 
-          {/* Mobile menu button */}
           <button
             onClick={() => setOpen(!open)}
             className="md:hidden text-white/80 hover:text-white transition"
@@ -85,7 +81,6 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile dropdown */}
         {open && (
           <div className="mt-4 flex flex-col gap-2 md:hidden animate-[fadeIn_0.2s_ease-out]">
             {navItems.map((item) => {

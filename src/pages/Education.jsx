@@ -69,7 +69,7 @@ const Education = () => {
           <h1 className="font-grotesk text-white text-5xl md:text-6xl font-extrabold tracking-tight">
             Education<span className="text-purple">.</span>
           </h1>
-          <p className="mt-4 text-white/60 max-w-2xl">
+          <p className="mt-4 text-white/60 max-w-2xl font-grotesk">
             Academic background and milestones that shaped my foundation in
             computer science.
           </p>

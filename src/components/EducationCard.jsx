@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 
-/* Card animation */
 const itemVariants = {
   hidden: { opacity: 0, y: 14 },
   show: {
@@ -35,10 +34,8 @@ const EducationCard = ({
         hover:shadow-[0_0_36px_rgba(166,74,201,0.32)]
       "
     >
-      {/* Left accent */}
       <div className="absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-purple/80 to-purple/20" />
 
-      {/* Content */}
       <h2 className="font-grotesk text-white text-2xl mb-1">
         {title}
       </h2>
@@ -59,7 +56,6 @@ const EducationCard = ({
         {gpa}
       </div>
 
-      {/* Soft ambient corner glow */}
       <div className="pointer-events-none absolute -bottom-28 -right-28 w-72 h-72 bg-purple/10 blur-[140px]" />
     </motion.div>
   );

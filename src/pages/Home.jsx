@@ -16,11 +16,13 @@ const Home = () => {
               Hi, I’m
             </p>
 
-            <h1 className="mt-2 font-grotesk text-white text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
+            <h1 className="mt-2 font-grotesk text-white text-5xl md:text-6xl lg:text-7xl
+             font-extrabold tracking-tight">
               Aadya Jha<span className="text-purple">.</span>
             </h1>
 
-            <p className="mt-6 text-white/85 text-base md:text-lg leading-relaxed max-w-xl font-grotesk">
+            <p className="mt-6 text-white/85 text-base md:text-lg leading-relaxed max-w-xl 
+            font-grotesk">
               Computer Science undergrad focused on creating fast, scalable, and intuitive
               web applications. With hands-on experience in the MERN stack, I enjoy building
               products that balance performance with thoughtful user experience. I’m currently
@@ -32,7 +34,7 @@ const Home = () => {
                 to="/projects"
                 className="
                     px-6 py-3 rounded-lg
-                    bg-purple text-black font-semibold
+                    bg-purple text-black font-semibold font-grotesk
                     hover:scale-105
                     hover:shadow-[0_0_30px_rgba(166,74,201,0.5)]
                     transition-all duration-300
@@ -45,7 +47,7 @@ const Home = () => {
               <Link
                 to="/resume"
                 className="
-                    px-6 py-3 rounded-lg
+                    px-6 py-3 rounded-lg font-grotesk
                     border border-purple text-purple
                     hover:bg-purple hover:text-black
                     hover:scale-105
@@ -87,11 +89,11 @@ const Home = () => {
                 </pre>
               </div>
 
-              <span className="absolute -top-4 right-6 px-3 py-1 rounded-full text-xs bg-purple/20 text-purple border border-purple/40 animate-float">
+              <span className="absolute -top-4 right-6 px-3 py-1 rounded-full font-grotesk text-xs bg-purple/20 text-purple border border-purple/40 animate-float">
                 Backend
               </span>
 
-              <span className="absolute top-1/2 -left-6 px-3 py-1 rounded-full text-xs bg-purple/20 text-purple border border-purple/40 animate-floatSlow">
+              <span className="absolute top-1/2 -left-6 px-3 py-1 rounded-full font-grotesk text-xs bg-purple/20 text-purple border border-purple/40 animate-floatSlow">
                 DSA
               </span>
 
@@ -99,7 +101,7 @@ const Home = () => {
                 React
               </span>
 
-              <span className="absolute -bottom-4 left-10 px-3 py-1 rounded-full text-xs bg-purple/20 text-purple border border-purple/40 animate-floatSlow">
+              <span className="absolute -bottom-4 left-10 px-3 py-1 rounded-full font-grotesk text-xs bg-purple/20 text-purple border border-purple/40 animate-floatSlow">
                 Node.js
               </span>
             </div>

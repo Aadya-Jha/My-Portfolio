@@ -44,6 +44,7 @@ const Experience = () => {
                 mb-6
                 px-4 py-1.5
                 text-sm
+                font-grotesk font-medium
                 rounded-full
                 bg-purple/10
                 text-purple
@@ -54,7 +55,7 @@ const Experience = () => {
               Under Development
             </span>
 
-            <p className="text-white/75 text-lg leading-relaxed max-w-2xl">
+            <p className="text-white/75 text-lg font-grotesk leading-relaxed max-w-2xl">
               I am currently focused on building strong foundations through
               hands-on projects, coursework, and consistent problem-solving.
               Actively seeking internship and early-career opportunities where
