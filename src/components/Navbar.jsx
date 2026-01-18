@@ -16,12 +16,14 @@ const Navbar = () => {
         className="flex items-center gap-6 px-6 py-3 rounded-xl
         bg-black-light/80 backdrop-blur-md
         border border-white/10
-        shadow-[0_0_30px_rgba(0,0,0,0.6)]"
+        shadow-[0_0_30px_rgba(0,0,0,0.6)]
+        hover:shadow-[0_0_20px_rgba(166,74,201,0.3)]
+    "
       >
         {/* Logo */}
         <Link
           to="/"
-          className="text-lg font-bold font-inter text-purple mr-4"
+          className="text-lg font-bold font-grotesk text-purple mr-4"
         >
           AJ<span className="text-white">.</span>
         </Link>
@@ -35,7 +37,7 @@ const Navbar = () => {
               key={item.name}
               to={item.path}
               className={`
-                px-3 py-1.5 rounded-md text-sm font-inter tracking-wide
+                px-3 py-1.5 rounded-md text-sm font-grotesk tracking-wide
                 border transition-all duration-300
                 ${
                   isActive

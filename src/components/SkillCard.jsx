@@ -10,7 +10,7 @@ const SkillCard = ({ icon, name }) => {
   rounded-xl
   border border-white/10
   text-white/90
-  font-inter text-sm
+  font-grotesk text-sm
 
   transition-all duration-300 ease-out
 

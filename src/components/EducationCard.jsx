@@ -1,27 +1,67 @@
-import React from "react";
+import { motion } from "framer-motion";
 
-const EducationCard = (props) => {
+/* Card animation */
+const itemVariants = {
+  hidden: { opacity: 0, y: 14 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: "easeOut" },
+  },
+};
+
+const EducationCard = ({
+  title,
+  institution,
+  period,
+  description,
+  gpa,
+}) => {
   return (
-    <div className="flex flex-col min-h-screen w-full justify-center items-start bg-black-light py-10 pr-0 md:pr-4 pl-0">
-      <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-4xl bg-black-dark border-2 border-purple 
-      rounded-3xl shadow-xl p-6 sm:p-8 md:p-10 ml-0">
-        <h3 className="text-purple text-xl md:text-3xl font-bold mb-4">{props.degree}</h3>
-        <h2 className="text-white text-lg md:text-2xl font-semibold mb-2">{props.college}</h2>
-        <h3 className="text-gray-300 text-md md:text-xl mb-6">{props.course}</h3>
+    <motion.div
+      variants={itemVariants}
+      className="
+        relative overflow-hidden
+        rounded-2xl
+        bg-gradient-to-b from-[#1c1924] to-[#13111a]
+        border border-white/10
+        px-7 py-7 md:px-9
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 text-base sm:text-lg text-gray-300">
-          <p>
-            <span className="text-white font-medium">CGPA:</span> {props.cgpa}
-          </p>
-          <p>
-            <span className="text-white font-medium">Timeline:</span> {props.timeline}
-          </p>
-          <p>
-            <span className="text-white font-medium">Location:</span> {props.location}
-          </p>
-        </div>
+        /* SINGLE controlled glow */
+        shadow-[0_0_20px_rgba(166,74,201,0.14)]
+
+        transition-all duration-300 ease-out
+        hover:border-purple/50
+        hover:shadow-[0_0_36px_rgba(166,74,201,0.32)]
+      "
+    >
+      {/* Left accent */}
+      <div className="absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-purple/80 to-purple/20" />
+
+      {/* Content */}
+      <h2 className="font-grotesk text-white text-2xl mb-1">
+        {title}
+      </h2>
+
+      <h3 className="text-purple text-lg mb-1">
+        {institution}
+      </h3>
+
+      <p className="text-white/60 text-sm mb-4">
+        {period}
+      </p>
+
+      <p className="text-white/75 leading-relaxed">
+        {description}
+      </p>
+
+      <div className="mt-4 text-purple font-semibold">
+        {gpa}
       </div>
-    </div>
+
+      {/* Soft ambient corner glow */}
+      <div className="pointer-events-none absolute -bottom-28 -right-28 w-72 h-72 bg-purple/10 blur-[140px]" />
+    </motion.div>
   );
 };
 

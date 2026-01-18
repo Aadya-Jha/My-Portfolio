@@ -1,66 +1,90 @@
-import React from "react";
 import Navbar from "../components/Navbar";
-import Topbar from "../components/Topbar";
 import EducationCard from "../components/EducationCard";
+import { motion } from "framer-motion";
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
+
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
 
 const Education = () => {
-  const features = [
+  const education = [
     {
-      degree: "Bachelor of Engineering(B.E)",
-      college: "Dayananda Sagar College of Engineering(DSCE)",
-      course: "Computer Science(IoT, Cybersecurity & Blockchain)",
-      cgpa: "9.88 CGPA",
-      location: "Bengaluru, Karnataka",
-      timeline: "2023-2027",
+      title: "Bachelor Of Engineering in Computer Science",
+      institution: "Dayananda Sagar College Of Engineering",
+      period: "2023 – 2027 | Bangalore, India",
+      gpa: "9.88 CGPA",
+      description:
+        "Relevant courses included Data Structures and Algorithms, Python for Cybersecurity, End to end IoT Solutions, Computer Networks and Security, AI/ML, Cloud Computing and Security.",
     },
     {
-      degree: "High School",
-      college: "Brilliant Public School",
-      course: "PCMC",
-      cgpa: "91.2%",
-      location: "Bilaspur, Chhattisgarh",
-      timeline: "2021-2023",
+      title: "Higher Secondary School",
+      institution: "Brilliant Public School",
+      period: "2021 – 2023 | Bilaspur, Chhattisgarh, India",
+      gpa: "91%",
+      description:
+        "Completed the course in Physics, Chemistry, Math and Computer Science with 91% in 12th grade. Got interested in programming and learned python.",
+    },
+    {
+      title: "Primary and Secondary School",
+      institution: "Brilliant Public School",
+      period: "2013 – 2021 | Bilaspur, Chhattisgarh, India",
+      gpa: "97%",
+      description:
+        "Consistently ranked 1st in examinations and participated and won multiple inter-school competitions. Completed the course with 97% in 10th grade.",
     },
   ];
 
   return (
-    <div className="bg-black-light min-h-screen w-full overflow-x-hidden overflow-y-auto">
+    <div className="bg-black-light min-h-screen w-full overflow-x-hidden">
       <Navbar />
 
-      <div className="flex flex-col pl-[3rem] sm:pl-0 pr-4 sm:pr-8"> {/* Left pad for navbar */}
-        <Topbar />
+      <main className="relative max-w-5xl mx-auto px-6 md:px-16 pt-24 pb-24">
+        <div className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute -top-40 -left-40 w-[360px] h-[360px] md:w-[520px] md:h-[520px] bg-purple/10 blur-[170px]" />
+          <div className="absolute top-1/3 -right-40 w-[420px] h-[420px] bg-purple/5 blur-[160px]" />
+        </div>
 
-        <div className="w-full flex justify-center mb-10 py-10 px-4 sm:px-9">
-          <h1 className="text-purple text-4xl sm:text-5xl font-bold text-center hover:drop-shadow-[0_0_10px_#A64AC9]">
-            Education
+        <motion.header
+          variants={sectionVariants}
+          initial="hidden"
+          animate="show"
+          className="mb-16"
+        >
+          <h1 className="font-grotesk text-white text-5xl md:text-6xl font-extrabold tracking-tight">
+            Education<span className="text-purple">.</span>
           </h1>
-        </div>
+          <p className="mt-4 text-white/60 max-w-2xl">
+            Academic background and milestones that shaped my foundation in
+            computer science.
+          </p>
+        </motion.header>
 
-        <div className="flex flex-col gap-8 items-center sm:items-center"> {/* Centered again */}
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="bg-black-dark border border-purple rounded-2xl shadow-[0_0_20px_#A64AC966] p-4 sm:p-6 w-full max-w-3xl overflow-hidden break-words"
-            >
-              <h2 className="text-white text-xl sm:text-2xl font-semibold mb-1">
-                {feature.degree}
-              </h2>
-              <h3 className="text-white text-lg sm:text-xl mb-1">
-                {feature.college}
-              </h3>
-              <p className="text-white text-base sm:text-lg italic mb-2">
-                {feature.course}
-              </p>
-
-              <div className="flex flex-wrap justify-between gap-2 text-purple text-sm sm:text-base font-medium">
-                <span>{feature.cgpa}</span>
-                <span>{feature.location}</span>
-                <span>{feature.timeline}</span>
-              </div>
-            </div>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          className="flex flex-col gap-12"
+        >
+          {education.map((item, i) => (
+            <EducationCard key={i} {...item} />
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </main>
     </div>
   );
 };

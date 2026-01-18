@@ -88,10 +88,14 @@ const Skills = () => {
         </div>
 
         <header className="mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-purple font-inter">
-            Skills
+          <h1 className="font-grotesk text-white text-5xl md:text-6xl font-extrabold tracking-tight">
+            Skills<span className="text-purple">.</span>
           </h1>
+          <p className="mt-4 text-white/60 max-w-2xl">
+            Technologies and tools I’ve worked with through projects and hands-on learning.
+          </p>
         </header>
+
 
         <div className="space-y-8">
           {sections.map((section, idx) => (
@@ -111,7 +115,7 @@ const Skills = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple/60 to-transparent animate-divider" />
               </div>
 
-              <h2 className="mb-5 text-sm font-semibold tracking-wide text-white/80 font-inter">
+              <h2 className="mb-5 text-md font-semibold font-grotesk tracking-wide text-white/80">
                 {section.title}
               </h2>
 
