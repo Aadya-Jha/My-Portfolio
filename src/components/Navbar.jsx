@@ -11,42 +11,40 @@ const navItems = [
 
 const Navbar = () => {
   const location = useLocation();
-  const [open, setOpen]       = useState(false);
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
+    const onResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onResize);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+    };
   }, []);
 
-  // close mobile menu on route change
   useEffect(() => setOpen(false), [location.pathname]);
 
   return (
     <>
       <style>{`
-        @keyframes fadeDown {
-          from { opacity: 0; transform: translateY(-6px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
         .nav-link {
-          position: relative;
           padding: 6px 14px;
           border-radius: 8px;
           font-size: 13px;
           font-family: 'Space Grotesk', sans-serif;
           font-weight: 500;
           letter-spacing: 0.03em;
-          border: 1px solid transparent;
+          border: 1px solid rgba(255,255,255,0.08);
           text-decoration: none;
-          transition: color 0.25s, border-color 0.25s, background 0.25s, box-shadow 0.25s;
-        }
-        .nav-link.inactive {
           color: rgba(255,255,255,0.55);
-          border-color: rgba(255,255,255,0.08);
+          transition: color 0.25s, border-color 0.25s, background 0.25s, box-shadow 0.25s;
+          white-space: nowrap;
         }
-        .nav-link.inactive:hover {
+        .nav-link:hover {
           color: #fff;
           border-color: rgba(166,74,201,0.4);
           background: rgba(166,74,201,0.05);
@@ -57,6 +55,12 @@ const Navbar = () => {
           background: rgba(166,74,201,0.08);
           box-shadow: 0 0 14px rgba(166,74,201,0.35);
         }
+        .mobile-drawer {
+          overflow: hidden;
+          transition: max-height 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease;
+        }
+        .mobile-drawer.open   { max-height: 400px; opacity: 1; }
+        .mobile-drawer.closed { max-height: 0; opacity: 0; }
         .mobile-link {
           display: block;
           padding: 10px 14px;
@@ -65,15 +69,12 @@ const Navbar = () => {
           font-family: 'Space Grotesk', sans-serif;
           font-weight: 500;
           letter-spacing: 0.03em;
-          border: 1px solid transparent;
+          border: 1px solid rgba(255,255,255,0.07);
           text-decoration: none;
+          color: rgba(255,255,255,0.55);
           transition: color 0.2s, border-color 0.2s, background 0.2s;
         }
-        .mobile-link.inactive {
-          color: rgba(255,255,255,0.55);
-          border-color: rgba(255,255,255,0.07);
-        }
-        .mobile-link.inactive:hover {
+        .mobile-link:hover {
           color: #fff;
           border-color: rgba(166,74,201,0.35);
           background: rgba(166,74,201,0.05);
@@ -83,12 +84,6 @@ const Navbar = () => {
           border-color: rgba(166,74,201,0.5);
           background: rgba(166,74,201,0.09);
         }
-        .mobile-drawer {
-          overflow: hidden;
-          transition: max-height 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease;
-        }
-        .mobile-drawer.open  { max-height: 400px; opacity: 1; }
-        .mobile-drawer.closed { max-height: 0;    opacity: 0; }
       `}</style>
 
       <nav style={{
@@ -113,7 +108,7 @@ const Navbar = () => {
           transition: "border-color 0.4s, box-shadow 0.4s",
         }}>
 
-          {/* ── top row ── */}
+          {/* top row */}
           <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
 
             {/* logo */}
@@ -127,64 +122,58 @@ const Navbar = () => {
               AJ<span style={{ color: "#fff" }}>.</span>
             </Link>
 
-            {/* desktop links */}
-            <div style={{ display: "flex", alignItems: "center", gap: 4 }} className="hidden md:flex">
-              {navItems.map(item => {
-                const isActive = location.pathname === item.path;
-                return (
+            {/* desktop links — pure inline, no Tailwind */}
+            {!isMobile && (
+              <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                {navItems.map(item => (
                   <Link
                     key={item.name}
                     to={item.path}
-                    className={`nav-link ${isActive ? "active" : "inactive"}`}
+                    className={`nav-link${location.pathname === item.path ? " active" : ""}`}
                   >
                     {item.name}
                   </Link>
-                );
-              })}
-            </div>
+                ))}
+              </div>
+            )}
 
             {/* mobile burger */}
-            <button
-              onClick={() => setOpen(o => !o)}
-              className="md:hidden"
-              aria-label="Toggle menu"
-              style={{
-                marginLeft: 8,
-                background: "none", border: "none",
-                cursor: "pointer", padding: 4,
-                color: "rgba(255,255,255,0.7)",
-                display: "flex", alignItems: "center",
-                transition: "color 0.2s",
-              }}
-              onMouseEnter={e => e.currentTarget.style.color = "#fff"}
-              onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.7)"}
-            >
-              <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round"
-                  d={open ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
-              </svg>
-            </button>
+            {isMobile && (
+              <button
+                onClick={() => setOpen(o => !o)}
+                aria-label="Toggle menu"
+                style={{
+                  marginLeft: 8, background: "none", border: "none",
+                  cursor: "pointer", padding: 4,
+                  color: "rgba(255,255,255,0.7)",
+                  display: "flex", alignItems: "center",
+                }}
+              >
+                <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round"
+                    d={open ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+                </svg>
+              </button>
+            )}
           </div>
 
-          {/* ── mobile drawer ── */}
-          <div className={`mobile-drawer ${open ? "open" : "closed"} md:hidden`}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 6, paddingTop: 12 }}>
-              {navItems.map(item => {
-                const isActive = location.pathname === item.path;
-                return (
+          {/* mobile drawer */}
+          {isMobile && (
+            <div className={`mobile-drawer ${open ? "open" : "closed"}`}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 6, paddingTop: 12 }}>
+                {navItems.map(item => (
                   <Link
                     key={item.name}
                     to={item.path}
                     onClick={() => setOpen(false)}
-                    className={`mobile-link ${isActive ? "active" : "inactive"}`}
+                    className={`mobile-link${location.pathname === item.path ? " active" : ""}`}
                   >
                     {item.name}
                   </Link>
-                );
-              })}
+                ))}
+              </div>
             </div>
-          </div>
-
+          )}
         </div>
       </nav>
     </>

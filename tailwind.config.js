@@ -6,10 +6,9 @@ export default {
   ],
   theme: {
     extend: {
-      colors:{
-        purple: "var(--purple)",
-        "black-light": "var(--black-light)",
-        "black-dark": "var(--black-dark)"
+      colors: {
+        purple: "#a64ac9",
+        "black-light": "#0a0a0f",
       },
       fontFamily:{
         inter: ['Inter', 'sans-serif'],
