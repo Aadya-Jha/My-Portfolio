@@ -2,47 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-    --purple: #A64AC9;
-    --black-light: #151312;
-    --black-dark: #09090b;
-}
-@keyframes dividerMove {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
+:root {
+  --purple: #a64ac9;
+  --black-light: #151312;
+  --black-dark: #0a0a0f;
 }
 
-.animate-divider {
-  animation: dividerMove 6s linear infinite;
-  opacity: 0.6;
+html {
+  scroll-behavior: smooth;
 }
 
+body {
+  background: #0a0a0f;
+  font-family: 'Space Grotesk', sans-serif;
+  color: white;
+}
+
+::selection {
+  background: #a64ac9;
+  color: white;
+}
+
+/* ── animations ── */
 @keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(0); }
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
 }
 
 @keyframes floatSlow {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
-}
-
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
-
-.animate-floatSlow {
-  animation: floatSlow 6s ease-in-out infinite;
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
 }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-6px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes dividerMove {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-float     { animation: float     4s ease-in-out infinite; }
+.animate-floatSlow { animation: floatSlow 6s ease-in-out infinite; }
+.animate-divider   { animation: dividerMove 6s linear infinite; opacity: 0.6; }

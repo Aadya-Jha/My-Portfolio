@@ -1,91 +1,132 @@
+import { useEffect, useRef, useState } from "react";
 import Navbar from "../components/Navbar";
 import Topbar from "../components/Topbar";
 import EducationCard from "../components/EducationCard";
-import { motion } from "framer-motion";
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
-  },
+/* ── intersection observer hook ───────────────────────────────── */
+const useInView = (threshold = 0.05) => {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setInView(true); },
+      { threshold }
+    );
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+  return [ref, inView];
 };
 
-const containerVariants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.1,
-    },
+/* ── data ──────────────────────────────────────────────────────── */
+const education = [
+  {
+    index: "01",
+    title: "Bachelor of Engineering in Computer Science",
+    institution: "Dayananda Sagar College of Engineering",
+    period: "2023 – 2027  ·  Bangalore, India",
+    gpa: "9.76",
+    description:
+      "Relevant coursework: Data Structures & Algorithms, Operating Systems, Computer Networks & Security, AI/ML, and Cloud Computing & Security.",
   },
-};
+  {
+    index: "02",
+    title: "Higher Secondary School (Class XII)",
+    institution: "Brilliant Public School",
+    period: "2021 – 2023  ·  Bilaspur, Chhattisgarh, India",
+    gpa: "91%",
+    description:
+      "Studied Physics, Chemistry, Mathematics and Computer Science. Developed a keen interest in programming and began learning Python during this period.",
+  },
+  {
+    index: "03",
+    title: "Primary & Secondary School (Class X)",
+    institution: "Brilliant Public School",
+    period: "2013 – 2021  ·  Bilaspur, Chhattisgarh, India",
+    gpa: "97%",
+    description:
+      "Consistently ranked 1st in examinations. Participated in and won multiple inter-school competitions across academics and extracurriculars.",
+  },
+];
 
+/* ══════════════════════════════════════════════════════════════ */
 const Education = () => {
-  const education = [
-    {
-      title: "Bachelor Of Engineering in Computer Science",
-      institution: "Dayananda Sagar College Of Engineering",
-      period: "2023 – 2027 | Bangalore, India",
-      gpa: "9.88 CGPA",
-      description:
-        "Relevant courses included Data Structures and Algorithms, Python for Cybersecurity, End to end IoT Solutions, Computer Networks and Security, AI/ML, Cloud Computing and Security.",
-    },
-    {
-      title: "Higher Secondary School",
-      institution: "Brilliant Public School",
-      period: "2021 – 2023 | Bilaspur, Chhattisgarh, India",
-      gpa: "91%",
-      description:
-        "Completed the course in Physics, Chemistry, Math and Computer Science with 91% in 12th grade. Got interested in programming and learned python.",
-    },
-    {
-      title: "Primary and Secondary School",
-      institution: "Brilliant Public School",
-      period: "2013 – 2021 | Bilaspur, Chhattisgarh, India",
-      gpa: "97%",
-      description:
-        "Consistently ranked 1st in examinations and participated and won multiple inter-school competitions. Completed the course with 97% in 10th grade.",
-    },
-  ];
+  const [listRef, inView] = useInView();
 
   return (
-    <div className="bg-black-light min-h-screen w-full overflow-x-hidden">
-      <Navbar />
-      <Topbar />
+    <div style={{ background: "#0a0a0f", minHeight: "100vh", overflowX: "hidden", position: "relative" }}>
 
-      <main className="relative max-w-5xl mx-auto px-6 md:px-16 pt-24 pb-24">
-        <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute -top-40 -left-40 w-[360px] h-[360px] md:w-[520px] md:h-[520px] bg-purple/10 blur-[170px]" />
-          <div className="absolute top-1/3 -right-40 w-[420px] h-[420px] bg-purple/5 blur-[160px]" />
+      {/* ── ambient glows ── */}
+      <div aria-hidden style={{
+        position: "fixed", top: "8%", left: "3%",
+        width: 480, height: 480, borderRadius: "50%",
+        background: "radial-gradient(circle, rgba(166,74,201,0.1) 0%, transparent 70%)",
+        filter: "blur(40px)", pointerEvents: "none", zIndex: 0,
+      }} />
+      <div aria-hidden style={{
+        position: "fixed", bottom: "10%", right: "4%",
+        width: 340, height: 340, borderRadius: "50%",
+        background: "radial-gradient(circle, rgba(166,74,201,0.07) 0%, transparent 70%)",
+        filter: "blur(40px)", pointerEvents: "none", zIndex: 0,
+      }} />
+
+      {/* ── grid bg ── */}
+      <div aria-hidden style={{
+        position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none",
+        backgroundImage: `
+          linear-gradient(rgba(166,74,201,0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(166,74,201,0.04) 1px, transparent 1px)
+        `,
+        backgroundSize: "48px 48px",
+      }} />
+
+      <div style={{ position: "relative", zIndex: 1 }}>
+        <Navbar />
+        <Topbar />
+      </div>
+
+      <main style={{ position: "relative", zIndex: 1, maxWidth: 900, margin: "0 auto", padding: "100px 24px 120px" }}>
+
+        {/* ── header ── */}
+        <div style={{ marginBottom: 64 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 16 }}>
+            <span style={{ fontFamily: "monospace", fontSize: 11, color: "#a64ac9", letterSpacing: "0.2em", textTransform: "uppercase" }}>
+              Education
+            </span>
+            <div style={{ width: 60, height: 1, background: "rgba(166,74,201,0.2)" }} />
+          </div>
+
+          <h1 style={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontSize: "clamp(36px, 6vw, 64px)",
+            fontWeight: 800, color: "#fff",
+            letterSpacing: "-0.02em", lineHeight: 1.05, margin: "0 0 16px",
+          }}>
+            Academic background<span style={{ color: "#a64ac9" }}>.</span>
+          </h1>
+
+          <p style={{
+            fontFamily: "'Space Grotesk', sans-serif", fontSize: 15,
+            color: "rgba(255,255,255,0.4)", maxWidth: 520, lineHeight: 1.75, margin: 0,
+          }}>
+            Milestones and coursework that shaped my foundation in computer science and engineering.
+          </p>
         </div>
 
-        <motion.header
-          variants={sectionVariants}
-          initial="hidden"
-          animate="show"
-          className="mb-16"
-        >
-          <h1 className="font-grotesk text-white text-5xl md:text-6xl font-extrabold tracking-tight">
-            Education<span className="text-purple">.</span>
-          </h1>
-          <p className="mt-4 text-white/60 max-w-2xl">
-            Academic background and milestones that shaped my foundation in
-            computer science.
-          </p>
-        </motion.header>
-
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          className="flex flex-col gap-12"
+        {/* ── cards ── */}
+        <div
+          ref={listRef}
+          style={{ display: "flex", flexDirection: "column", gap: 20 }}
         >
           {education.map((item, i) => (
-            <EducationCard key={i} {...item} />
+            <EducationCard
+              key={item.index}
+              {...item}
+              cardIndex={i}
+              inView={inView}
+            />
           ))}
-        </motion.div>
+        </div>
       </main>
     </div>
   );

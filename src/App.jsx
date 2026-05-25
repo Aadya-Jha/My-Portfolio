@@ -10,23 +10,21 @@ import '@fontsource/inter/400.css';
 import '@fontsource/inter/600.css';
 import '@fontsource/inter/700.css';
 
-
 function App() {
-  
   return (
-    <>
+    <div style={{ background: "#0a0a0f", minHeight: "100vh" }}>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Home />}/>
-          <Route path='/Skills' element={<Skills />}/>
-          <Route path='/education' element={<Education />}/>
-          <Route path='/projects' element={<Projects />}/>
-          <Route path='/experience' element={<Experience />}/>
-          <Route path='/*' element={<NotFound />}/>
-          <Route path='/resume' element={<Resume />}/>
+          <Route path="/"           element={<Home />} />
+          <Route path="/skills"     element={<Skills />} />
+          <Route path="/education"  element={<Education />} />
+          <Route path="/projects"   element={<Projects />} />
+          <Route path="/experience" element={<Experience />} />
+          <Route path="/resume"     element={<Resume />} />
+          <Route path="/*"          element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </div>
   )
 }
 
